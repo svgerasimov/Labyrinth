@@ -37,7 +37,7 @@ public class Labyrinth {
         }
     }
 
-    public boolean isCellPassable(int row, int col) {
+    private boolean isCellPassable(int row, int col) {
         if(row >= 0 && row < rows && col >= 0 && col < cols) {
            return grid[row][col];
         }

@@ -1,31 +1,16 @@
 public class Main {
     public static void main(String[] args) {
+        // Изменено на 4x4, чтобы соответствовать используемым индексам
+        var labyrinth = new Labyrinth(4, 4);
 
-      var labyrinth  = new Labyrinth(3, 3);
-
+        // Инициализируем все клетки как препятствия
         for (int i = 0; i < labyrinth.getRows(); i++) {
             for (int j = 0; j < labyrinth.getCols(); j++) {
                 labyrinth.setCell(i, j, false);
             }
         }
 
-        // Сделаем дорожку: (0,0) -> (0,1) -> (0,2) -> (0,3) -> (1,3) -> (2, 3) -> (3,3)
-        // (1,0) -> (1,1) -> (2,1) -> (3, 1) -> (3,2)
-
-        /**
-         *
-         *
-         *                 {0, 0, 0, 0},
-         *                 {0, 0, 1, 0},
-         *                 {1, 0, 1, 0},
-         *                 {1, 0, 0, 0},
-         *
-         *
-         *
-         *
-         *
-         *
-         */
+        // Создаем проходимые пути
         labyrinth.setCell(0,0,true);
         labyrinth.setCell(0,1,true);
         labyrinth.setCell(0,2,true);
@@ -40,6 +25,7 @@ public class Main {
         labyrinth.setCell(3,1,true);
         labyrinth.setCell(3,2,true);
 
+        // Ищем путь от (0,0) до (2,3)
         var path = labyrinth.findPath(0, 0, 2, 3);
 
         if(path != null) {
@@ -47,8 +33,8 @@ public class Main {
             for (int[] cell : path) {
                 System.out.println("(" + cell[0] + ", " + cell[1] + ")");
             }
+        } else {
+            System.out.println("Путь не найден");
         }
-
-
     }
 }
